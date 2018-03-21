@@ -1,4 +1,4 @@
-package com.udemy.springmvcrestdemo.api.model;
+package com.udemy.springmvcrestdemo.api.v1.model;
 
 import lombok.Data;
 

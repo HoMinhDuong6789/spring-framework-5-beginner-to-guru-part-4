@@ -1,12 +1,14 @@
 package com.udemy.springmvcrestdemo.services;
 
-import com.udemy.springmvcrestdemo.api.mapper.CategoryMapper;
-import com.udemy.springmvcrestdemo.api.model.CategoryDTO;
+import com.udemy.springmvcrestdemo.api.v1.mapper.CategoryMapper;
+import com.udemy.springmvcrestdemo.api.v1.model.CategoryDTO;
 import com.udemy.springmvcrestdemo.repositories.CategoryRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryMapper categoryMapper;

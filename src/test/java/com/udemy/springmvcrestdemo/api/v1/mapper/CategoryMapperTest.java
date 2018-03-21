@@ -1,6 +1,6 @@
-package com.udemy.springmvcrestdemo.api.mapper;
+package com.udemy.springmvcrestdemo.api.v1.mapper;
 
-import com.udemy.springmvcrestdemo.api.model.CategoryDTO;
+import com.udemy.springmvcrestdemo.api.v1.model.CategoryDTO;
 import com.udemy.springmvcrestdemo.domain.Category;
 import org.junit.Test;
 
