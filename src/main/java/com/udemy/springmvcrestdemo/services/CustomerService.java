@@ -1,6 +1,5 @@
 package com.udemy.springmvcrestdemo.services;
 
-import com.udemy.springmvcrestdemo.api.v1.mapper.CustomerMapper;
 import com.udemy.springmvcrestdemo.api.v1.model.CustomerDTO;
 
 import java.util.List;
@@ -14,5 +13,7 @@ public interface CustomerService {
     CustomerDTO createNewCustomer(CustomerDTO customerDTO);
 
     CustomerDTO saveCustomerByDTO(Long id, CustomerDTO customerDTO);
+
+    CustomerDTO patchCustomer(Long id, CustomerDTO customerDTO);
 }
 
