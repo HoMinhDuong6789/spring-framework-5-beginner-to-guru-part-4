@@ -13,22 +13,25 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
-public class CustomerServiceTest {
+public class CustomerServiceImplTest {
 
     @Mock
     CustomerRepository customerRepository;
 
     CustomerMapper customerMapper = CustomerMapper.INSTANCE;
 
-    CustomerService customerService;
+    CustomerServiceImpl customerService;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        customerService = new CustomerServiceImpl(customerMapper, customerRepository);
+        customerService = new CustomerServiceImpl();
+        customerService.setCustomerMapper(customerMapper);
+        customerService.setCustomerRepository(customerRepository);
     }
 
     @Test
@@ -64,5 +67,25 @@ public class CustomerServiceTest {
         //when
         CustomerDTO customerDTO = customerService.getCustomerById(1L);
         assertEquals("Darth", customerDTO.getFirstname());
+    }
+
+    @Test
+    public void createNewCustomer() throws Exception {
+
+        //given
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setFirstname("Danila");
+        Customer savedCustomer = new Customer();
+        savedCustomer.setFirstname(customerDTO.getFirstname());
+        savedCustomer.setLastname(customerDTO.getLastname());
+        savedCustomer.setId(1l);
+        when(customerRepository.save(any(Customer.class))).thenReturn(savedCustomer);
+
+        //when
+        CustomerDTO savedDto = customerService.createNewCustomer(customerDTO);
+
+        //then
+        assertEquals(customerDTO.getFirstname(), savedDto.getFirstname());
+        assertEquals("/api/v1/customer/1", savedDto.getCustomerUrl());
     }
 }
