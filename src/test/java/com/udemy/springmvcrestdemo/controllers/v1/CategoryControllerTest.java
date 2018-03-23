@@ -50,7 +50,7 @@ public class CategoryControllerTest {
         category2.setName("Bob");
         List<CategoryDTO> categories = Arrays.asList(category1, category2);
         when(categoryService.getAllCategories()).thenReturn(categories);
-        mockMvc.perform(get("/api/v1/categories/")
+        mockMvc.perform(get(CategoryController.BASE_URL)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.categories", hasSize(2)));
@@ -62,7 +62,7 @@ public class CategoryControllerTest {
         category1.setId(1l);
         category1.setName(NAME);
         when(categoryService.getCategoryByName(anyString())).thenReturn(category1);
-        mockMvc.perform(get("/api/v1/categories/Jim")
+        mockMvc.perform(get(CategoryController.BASE_URL + "/Jim")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo(NAME)));
