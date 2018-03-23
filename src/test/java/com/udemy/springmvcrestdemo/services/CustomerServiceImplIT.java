@@ -6,6 +6,7 @@ import com.udemy.springmvcrestdemo.bootstrap.Bootstrap;
 import com.udemy.springmvcrestdemo.domain.Customer;
 import com.udemy.springmvcrestdemo.repositories.CategoryRepository;
 import com.udemy.springmvcrestdemo.repositories.CustomerRepository;
+import com.udemy.springmvcrestdemo.repositories.VendorRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,13 +32,16 @@ public class CustomerServiceImplIT {
     @Autowired
     CategoryRepository categoryRepository;
 
+    @Autowired
+    VendorRepository vendorRepository;
+
     CustomerService customerService;
 
     @Before
     public void setUp() throws Exception {
         System.out.println("Loading Customer Data");
         System.out.println(customerRepository.findAll().size());
-        Bootstrap bootstrap = new Bootstrap(categoryRepository, customerRepository);
+        Bootstrap bootstrap = new Bootstrap(categoryRepository, customerRepository, vendorRepository);
         bootstrap.run();
         customerService = new CustomerServiceImpl(CustomerMapper.INSTANCE, customerRepository);
     }
