@@ -22,13 +22,13 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @ApiOperation(value = "This will get a list of customers.", notes = "Some notes about the API.")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public CustomerListDTO getListofCustomers() {
         return new CustomerListDTO(customerService.getAllCustomers());
     }
 
-    @ApiOperation(value = "This will get a list of customers.", notes = "Some notes about the API.")
     @GetMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public CustomerDTO getCustomerById(@PathVariable Long id) {
