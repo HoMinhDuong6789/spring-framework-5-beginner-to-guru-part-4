@@ -3,10 +3,13 @@ package com.udemy.springmvcrestdemo.controllers.v1;
 import com.udemy.springmvcrestdemo.api.v1.model.CustomerDTO;
 import com.udemy.springmvcrestdemo.api.v1.model.CustomerListDTO;
 import com.udemy.springmvcrestdemo.services.CustomerService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Api(description = "This is a Customer Controller")
 @RestController
 @RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
@@ -25,6 +28,7 @@ public class CustomerController {
         return new CustomerListDTO(customerService.getAllCustomers());
     }
 
+    @ApiOperation(value = "This will get a list of customers.", notes = "Some notes about the API.")
     @GetMapping({"/{id}"})
     @ResponseStatus(HttpStatus.OK)
     public CustomerDTO getCustomerById(@PathVariable Long id) {
