@@ -1,6 +1,6 @@
 package com.udemy.springmvcrestdemo.api.v1.mapper;
 
-import com.udemy.springmvcrestdemo.api.v1.model.CustomerDTO;
+import com.udemy.model.CustomerDTO;
 import com.udemy.springmvcrestdemo.domain.Customer;
 import org.junit.Test;
 

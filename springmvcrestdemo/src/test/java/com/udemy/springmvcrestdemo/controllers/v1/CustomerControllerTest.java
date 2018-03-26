@@ -1,6 +1,6 @@
 package com.udemy.springmvcrestdemo.controllers.v1;
 
-import com.udemy.springmvcrestdemo.api.v1.model.CustomerDTO;
+import com.udemy.model.CustomerDTO;
 import com.udemy.springmvcrestdemo.controllers.RestResponseEntityExceptionHandler;
 import com.udemy.springmvcrestdemo.services.CustomerService;
 import com.udemy.springmvcrestdemo.services.ResourceNotFoundException;
@@ -89,7 +89,7 @@ public class CustomerControllerTest {
         returnDTO.setFirstname(customer.getFirstname());
         returnDTO.setLastname(customer.getLastname());
         returnDTO.setCustomerUrl(CustomerController.BASE_URL + "/1");
-        when(customerService.createNewCustomer(customer)).thenReturn(returnDTO);
+        when(customerService.createNewCustomer(any())).thenReturn(returnDTO);
 
         //when/then
         mockMvc.perform(post(CustomerController.BASE_URL)

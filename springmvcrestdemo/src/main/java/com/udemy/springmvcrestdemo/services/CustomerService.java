@@ -1,6 +1,6 @@
 package com.udemy.springmvcrestdemo.services;
 
-import com.udemy.springmvcrestdemo.api.v1.model.CustomerDTO;
+import com.udemy.model.CustomerDTO;
 
 import java.util.List;
 

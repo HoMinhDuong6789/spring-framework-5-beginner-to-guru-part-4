@@ -1,7 +1,7 @@
 package com.udemy.springmvcrestdemo.services;
 
+import com.udemy.model.CustomerDTO;
 import com.udemy.springmvcrestdemo.api.v1.mapper.CustomerMapper;
-import com.udemy.springmvcrestdemo.api.v1.model.CustomerDTO;
 import com.udemy.springmvcrestdemo.bootstrap.Bootstrap;
 import com.udemy.springmvcrestdemo.domain.Customer;
 import com.udemy.springmvcrestdemo.repositories.CategoryRepository;

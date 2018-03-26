@@ -1,12 +1,11 @@
 package com.udemy.springmvcrestdemo.controllers.v1;
 
-import com.udemy.springmvcrestdemo.api.v1.model.CustomerDTO;
-import com.udemy.springmvcrestdemo.api.v1.model.CustomerListDTO;
+import com.udemy.model.CustomerDTO;
+import com.udemy.model.CustomerListDTO;
 import com.udemy.springmvcrestdemo.services.CustomerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Api(description = "This is a Customer Controller")
@@ -26,7 +25,9 @@ public class CustomerController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public CustomerListDTO getListofCustomers() {
-        return new CustomerListDTO(customerService.getAllCustomers());
+        CustomerListDTO customerListDTO = new CustomerListDTO();
+        customerListDTO.getCustomers().addAll(customerService.getAllCustomers());
+        return customerListDTO;
     }
 
     @GetMapping({"/{id}"})

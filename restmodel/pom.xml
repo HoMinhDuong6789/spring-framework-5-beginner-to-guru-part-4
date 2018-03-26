@@ -6,7 +6,7 @@
 	<groupId>com.udemy</groupId>
 	<artifactId>rest-model</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
 	<name>rest-model</name>
 	<description>Spring MVC REST Demo project for Spring Boot</description>
